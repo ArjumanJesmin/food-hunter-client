@@ -2,6 +2,8 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import banner1 from '../../assets/banner1.jpg'
+import ChefGroup from './ChefGroup';
+
 
 
 const Header = () => {
@@ -18,15 +20,19 @@ const Header = () => {
     objectFit: 'cover',
     opacity: '0.8',
   };
-    return (
+  return (
 
+    <>
       <div style={jumbotronStyle}>
-      <Container className='text-center p-5'>
-        <h1 className='m-4'>Savoring the Flavors of Italy: A Culinary Journey Through Its Delicious Cuisine</h1>
-        <p>Italian cuisine is one of the most popular and beloved in the world, renowned for its rich flavors, fresh ingredients, and timeless traditions. From classic dishes like spaghetti carbonara and lasagna to regional specialties such as Neapolitan pizza and Sicilian cannoli, Italian food offers a truly diverse and mouth-watering culinary experience.</p>
-      </Container>
-    </div>
-    );
+          <Container className='text-center p-5'>
+              <h1 className='m-4'>Savoring the Flavors of Italy: A Culinary Journey Through Its Delicious Cuisine</h1>
+              <p>Italian cuisine is one of the most popular and beloved in the world, renowned for its rich flavors, fresh ingredients, and timeless traditions. From classic dishes like spaghetti carbonara and lasagna to regional specialties such as Neapolitan pizza and Sicilian cannoli, Italian food offers a truly diverse and mouth-watering culinary experience.</p>
+          </Container>
+      </div>
+      
+      <ChefGroup />
+    </>
+  );
 };
 
 export default Header;

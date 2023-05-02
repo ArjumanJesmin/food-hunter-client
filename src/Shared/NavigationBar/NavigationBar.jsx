@@ -11,15 +11,14 @@ const NavigationBar = () => {
         <Navbar.Brand href="#home">Delicious Italian Food</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mx-auto">
-            <Nav.Link href="#home">Name</Nav.Link>
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Blog</Nav.Link>
+          <Nav className="mx-auto gap-3">
+            <Link  className='text-decoration-none' to="/about">About</Link>
+            <Link  className='text-decoration-none' to="/home">Home</Link>
+            <Link  className='text-decoration-none' to="/blog">Blog</Link>
           </Nav>
         </Navbar.Collapse>
         <Link to="/login"><Button variant="outline-secondary">Login</Button></Link>
       </Container>
-     
     </Navbar>
         </div>
     );
