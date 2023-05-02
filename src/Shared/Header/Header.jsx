@@ -1,52 +1,31 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { Carousel } from 'react-bootstrap';
-import banner1 from '../../assets/banner1 .jpg'
-import banner2 from '../../assets/banner2.jpg'
-import banner3 from '../../assets/banner3.jpg'
+import { Container } from 'react-bootstrap';
+import banner1 from '../../assets/banner1.jpg'
 
 
 const Header = () => {
+
+  const jumbotronStyle = {
+    backgroundImage: `url(${banner1})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center center',
+    color: '#fff',
+    textShadow: '1px 1px 1px #000',
+    height: '500px',
+    width: '100%',
+    objectFit: 'cover',
+    opacity: '0.8',
+  };
     return (
-        <Carousel slide={false}>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 h-30"
-            src={banner1}
-            alt="First slide"
-          />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={banner2}
-            alt="Second slide"
-          />
-  
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={banner3}
-            alt="Third slide"
-          />
-  
-          <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+
+      <div style={jumbotronStyle}>
+      <Container className='text-center p-5'>
+        <h1 className='m-4'>Savoring the Flavors of Italy: A Culinary Journey Through Its Delicious Cuisine</h1>
+        <p>Italian cuisine is one of the most popular and beloved in the world, renowned for its rich flavors, fresh ingredients, and timeless traditions. From classic dishes like spaghetti carbonara and lasagna to regional specialties such as Neapolitan pizza and Sicilian cannoli, Italian food offers a truly diverse and mouth-watering culinary experience.</p>
+      </Container>
+    </div>
     );
 };
 
