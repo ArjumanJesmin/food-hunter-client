@@ -4,8 +4,11 @@ import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaRegSmile } from "react-icons/fa";
+import { getAuth } from "firebase/auth";
+import app from '../../firebase/firebase.config';
 
 
+const auth = getAuth(app);
 const Register = () => {
 
     const handleRegister = (event) => {
