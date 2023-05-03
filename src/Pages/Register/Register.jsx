@@ -1,22 +1,22 @@
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable no-unused-vars */
 import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaGoogle, FaRegSmile } from "react-icons/fa";
-// import { AuthContext } from '../../providers/AuthProvider';
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
-import app from '../../firebase/firebase.config';
+import {  FaRegSmile } from "react-icons/fa";
+import { AuthContext } from '../../providers/AuthProvider';
 
 
-const auth = getAuth(app);
+// const auth = getAuth(app);
 
 const Register = () => {
     const [error,setError] =useState('')
-    // const {user, createUser } = useContext(AuthContext)
-
+    const [success,setSuccess] =useState('')
+    const { createUser } = useContext(AuthContext);
+   
     const handleRegister = (event) => {
         event.preventDefault();
+        setError('')
+        setSuccess('')
+       
 
         const form = event.target;
         const name = form.name.value;
@@ -25,16 +25,19 @@ const Register = () => {
         const password= form.password.value;
         console.log(name, photo, email, password)
 
-        // createUser(email,password)
-        createUserWithEmailAndPassword(auth, email, password)
+        if (password < 6) {
+            setError(' please At least one special character!')
+            return
+        }
+
+        createUser(email,password)
         .then(result=>{
             const createdUser = result.user
             console.log(createdUser)
-            // form.reset()
+            setSuccess('Register Successfully')
         })
         .catch(error =>{
             console.log(error)
-            setError('')
         })
     }
 
@@ -63,16 +66,16 @@ const Register = () => {
                 </Form.Group>
 
                 <Form.Text className="text-muted">
-
+                   
                 </Form.Text>
                 <Button variant="primary" type="submit">
                     Register
                 </Button>
                 <br/>
-                <Link className='m-2 ' to='/'><FaGoogle/></Link>
-                <Link className='m-2 text-dark' to='/'><FaGithub/></Link>
+                
                 <p><small> You have all ready register? please <Link className='text-primary text-decoration-none' to='/login'>Login</Link></small></p>
             </Form>
+            <p>{error}</p>
             <div>
                 
             </div>

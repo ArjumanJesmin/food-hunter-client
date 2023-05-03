@@ -1,9 +1,20 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
+import { FaUserCircle } from 'react-icons/fa';
 
 const NavigationBar = () => {
+
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch(error => console.log(error))
+  }
+
   return (
     <>
       <Navbar bg="light" expand="lg" className='py-4'>
@@ -17,7 +28,13 @@ const NavigationBar = () => {
               <Link className='text-decoration-none text-dark' to="/blog">Blog</Link>
             </Nav>
           </Navbar.Collapse>
-          <Link to="/login"><Button variant="outline-secondary">Login</Button></Link>
+
+          {user && <Nav.Link href="#deets"> <FaUserCircle style={{ fontSize: '2rem' }} /> {user.displayName}</Nav.Link>}
+
+          {
+            user ? <Button onClick={handleLogOut} variant="secondary">LogOut</Button> :
+              <Link to='/login'><Button variant="secondary">Login</Button></Link>
+          }
         </Container>
       </Navbar>
     </>

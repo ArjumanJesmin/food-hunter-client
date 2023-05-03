@@ -12,7 +12,7 @@ const SingleShefCard = ({shef}) => {
                 <Card.Body>
                     <Card.Title> Title: {name}</Card.Title>
                     <Card.Text>
-                     Experience:   {years_of_experience}
+                     Experience: {years_of_experience}
                     </Card.Text>
                     <Card.Text>
                       Like:  {like}
