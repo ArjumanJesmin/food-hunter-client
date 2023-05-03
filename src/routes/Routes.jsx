@@ -11,6 +11,8 @@ import Register from "../Pages/Register/Register";
 import About from "../Pages/About/About";
 import Blog from "../Pages/Blog/Blog";
 import NotFound from "../NotFound/NotFound";
+import Recipes from "../Pages/Home/Recipes";
+import Items from "../Pages/Home/Items";
 
 
 const router = createBrowserRouter([
@@ -44,6 +46,15 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <Register />
+  },
+  {
+    path: '/recipes/:id',
+    element: <Recipes/>,
+    loader:({params}) => fetch(`https://shef-sarver-side-aapc3yet9-arjumanjesmin.vercel.app/allData/${params.id}`)
+  },
+  {
+    path: '/items',
+    element: <Items/>
   },
   {
     path: '/*',
