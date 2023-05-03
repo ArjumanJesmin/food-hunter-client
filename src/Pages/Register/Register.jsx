@@ -1,15 +1,19 @@
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { FaRegSmile } from "react-icons/fa";
-import { getAuth } from "firebase/auth";
+import { FaGithub, FaGoogle, FaRegSmile } from "react-icons/fa";
+// import { AuthContext } from '../../providers/AuthProvider';
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import app from '../../firebase/firebase.config';
 
 
 const auth = getAuth(app);
+
 const Register = () => {
+    const [error,setError] =useState('')
+    // const {user, createUser } = useContext(AuthContext)
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -20,6 +24,18 @@ const Register = () => {
         const email = form.email.value;
         const password= form.password.value;
         console.log(name, photo, email, password)
+
+        // createUser(email,password)
+        createUserWithEmailAndPassword(auth, email, password)
+        .then(result=>{
+            const createdUser = result.user
+            console.log(createdUser)
+            // form.reset()
+        })
+        .catch(error =>{
+            console.log(error)
+            setError('')
+        })
     }
 
     return (
@@ -52,6 +68,9 @@ const Register = () => {
                 <Button variant="primary" type="submit">
                     Register
                 </Button>
+                <br/>
+                <Link className='m-2 ' to='/'><FaGoogle/></Link>
+                <Link className='m-2 text-dark' to='/'><FaGithub/></Link>
                 <p><small> You have all ready register? please <Link className='text-primary text-decoration-none' to='/login'>Login</Link></small></p>
             </Form>
             <div>
