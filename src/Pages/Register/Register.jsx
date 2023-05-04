@@ -17,23 +17,28 @@ const Register = () => {
         setError('')
         setSuccess('')
        
-
         const form = event.target;
         const name = form.name.value;
         const photo = form.photo.value;
         const email = form.email.value;
         const password= form.password.value;
-        console.log(name, photo, email, password)
 
-        if (password < 6) {
-            setError(' please At least one special character!')
+        if (!/(?=.*[A-Z])/.test(password)) {
+            setError('please add at least one uppercase')
             return
+        } else if (!/(?=.*?[#?!@$%^&*-])/.test(password)) {
+            setError('please add at least one uppercase')
+            return;
+        } else if (password.length < 6){
+            setError('please Minimum six in length!');
+            return;
         }
 
         createUser(email,password)
         .then(result=>{
             const createdUser = result.user
             console.log(createdUser)
+            event.target.reset();
             setSuccess('Register Successfully')
         })
         .catch(error =>{
@@ -75,7 +80,8 @@ const Register = () => {
                 
                 <p><small> You have all ready register? please <Link className='text-primary text-decoration-none' to='/login'>Login</Link></small></p>
             </Form>
-            <p>{error}</p>
+            <p className='text-danger'>{error}</p>
+            <p className='text-success'>{success}</p>
             <div>
                 
             </div>
