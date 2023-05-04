@@ -1,13 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
+
+import '../NavigationBar/NavigationBar.css'
 
 const NavigationBar = () => {
 
   const { user, logOut } = useContext(AuthContext);
+
+  const [active, setActive] = useState('home');
 
   const handleLogOut = () => {
     logOut()
@@ -15,6 +19,10 @@ const NavigationBar = () => {
       .catch(error => console.log(error))
   }
 
+  
+  const handleNavClick = (linkName) => {
+    setActive(linkName);
+  };
   return (
     <>
       <Navbar bg="light" expand="lg" className='py-4'>
@@ -23,9 +31,11 @@ const NavigationBar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto gap-3">
-              <Link className='text-decoration-none text-dark' to="/about">About</Link>
-              <Link className='text-decoration-none text-dark' to="/">Home</Link>
-              <Link className='text-decoration-none text-dark' to="/blog">Blog</Link>
+              <NavLink   onClick={() => handleNavClick('home')} className={`text-decoration-none text-dark nav-link ${active === 'home' ? 'active' : ''}`} to="/" >Home</NavLink>
+
+              <NavLink className={ `text-decoration-none text-dark nav-link ${active === 'about' ? 'active' : ''}`} to="/about" onClick={() => handleNavClick('about')} >About</NavLink>
+
+              <NavLink onClick={() => handleNavClick('blog')}  className={`text-decoration-none text-dark nav-link ${active === 'blog' ? 'active' : ''}`} to="/blog" >Blog</NavLink>
             </Nav>
           </Navbar.Collapse>
 

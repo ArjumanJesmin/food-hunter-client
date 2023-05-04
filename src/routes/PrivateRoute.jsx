@@ -1,12 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../providers/AuthProvider';
+import { Navigate } from 'react-router-dom';
 
-const PrivateRoute = () => {
-    return (
-        <div>
-           <h2>This is Privet Route</h2> 
-        </div>
-    );
+const PrivateRoute = ({children}) => {
+
+    const {user} = useContext(AuthContext)
+
+
+    if(user){
+        return children;    
+    }
+    return <Navigate to="/login"></Navigate>
 };
 
 export default PrivateRoute;

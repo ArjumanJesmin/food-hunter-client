@@ -13,6 +13,7 @@ import Blog from "../Pages/Blog/Blog";
 import NotFound from "../NotFound/NotFound";
 import Recipes from "../Pages/Home/Recipes";
 import Items from "../Pages/Home/Items";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/recipes/:id',
-    element: <Recipes/>,
+    element: <PrivateRoute><Recipes/></PrivateRoute>,
     loader:({params}) => fetch(`https://shef-sarver-side-aapc3yet9-arjumanjesmin.vercel.app/allData/${params.id}`)
   },
   {
