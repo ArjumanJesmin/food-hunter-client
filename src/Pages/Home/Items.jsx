@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from 'react';
+import React, {  useState } from 'react';
 import { Button, Card, CardGroup, Container } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -20,9 +20,9 @@ const Items = () => {
 
     return (
         <Container >
-            <Suspense fallback={<div>Loading...</div>}>
+            {/* <Suspense fallback={<div>Loading...</div>}>
                 <MyLazyComponent />
-            </Suspense>
+            </Suspense> */}
             <CardGroup className='m-4 gap-3'>
                 <Card className="text-center mx-auto my-5">
                     <h2 className='pt-2'></h2>
