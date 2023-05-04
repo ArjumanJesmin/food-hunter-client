@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { FaGithub, FaGoogle, FaRegSmile } from 'react-icons/fa';
-import { Link, Navigate, useLocation } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 import { AuthContext } from '../../providers/AuthProvider';
@@ -10,6 +10,8 @@ import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
     const auth = getAuth(app);
+    const navigate = useNavigate()
+
     const googleProvider = new GoogleAuthProvider();
     const GithubProvider = new GithubAuthProvider();
     const { signIn } = useContext(AuthContext);
@@ -36,7 +38,8 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
-                Navigate(from, {replace:true})
+                navigate(from, {replace:true})
+                
             })
             .catch(error => {
                 console.log(error)
@@ -49,7 +52,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
-                Navigate(from, {replace:true})
+                navigate(from, {replace:true})
 
             })
             .catch(error => console.log(error.message))
@@ -61,6 +64,7 @@ const Login = () => {
             .then(result => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser)
+                navigate(from, {replace:true})
             })
             .catch(error => console.log(error.message))
     }
@@ -68,10 +72,13 @@ const Login = () => {
     // -------------------------------------------------------
 
     return (
-        <div className='w-25 mx-auto border p-5 rounded my-5 bg-light'>
-            <h2 className='text-center text-primary py-2'>Login <FaRegSmile /> </h2>
-            <Form onSubmit={handleLogin}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Container >
+            
+            <Row>
+                <Col lg={4} md={4} sm={2} className=' mx-auto  p-5  my-5  border rounded bg-light shadow'>
+                <h2 className='text-center text-primary py-2'>Login <FaRegSmile /> </h2>
+                <Form onSubmit={handleLogin}>
+                <Form.Group className="mb-3 w-50%" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name='email' placeholder="Enter email" />
 
@@ -92,7 +99,9 @@ const Login = () => {
 
                 <p><small> You have no account? please <Link className='text-primary text-decoration-none' to='/register'>Register</Link></small></p>
             </Form>
-        </div>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

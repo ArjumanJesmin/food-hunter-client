@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import {  FaRegSmile } from "react-icons/fa";
 import { AuthContext } from '../../providers/AuthProvider';
@@ -47,8 +47,10 @@ const Register = () => {
     }
 
     return (
-        <div className=' mx-auto border p-5 rounded my-5 bg-light' style={{ width: '35%' }}>
-            <h2 className='tex-center py-2 text-primary'>Register <FaRegSmile /> </h2>
+       <Container>
+         <Row>
+         <Col lg={6} md={4} sm={2} className=' mx-auto border p-5 rounded my-5 bg-light' >
+            <h2 className='text-center py-2 text-primary'>Register <FaRegSmile /> </h2>
             <Form onSubmit={handleRegister}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Your Name</Form.Label>
@@ -85,7 +87,9 @@ const Register = () => {
             <div>
                 
             </div>
-        </div>
+        </Col>
+         </Row>
+       </Container>
     );
 };
 
