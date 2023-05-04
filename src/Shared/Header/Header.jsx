@@ -3,6 +3,8 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import banner1 from '../../assets/banner1.jpg'
 import ChefGroup from './ChefGroup';
+import SectionOne from '../../Pages/About/SectionOne';
+import SectionTwo from '../../Pages/About/SectionTwo';
 
 
 
@@ -31,6 +33,8 @@ const Header = () => {
       </div>
       
       <ChefGroup />
+      <SectionOne/>
+      <SectionTwo/>
     </>
   );
 };
