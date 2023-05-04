@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { Button, Card, CardGroup, Container } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,14 +10,19 @@ const Items = () => {
     const { recipes } = data
 
     const [accepted, setAccepted] = useState(false)
-   
-    const handleAccepted = () =>{
+
+    const handleAccepted = () => {
         setAccepted(true)
         toast.success(' WOW   I Like it! ');
     }
 
+    //  const MyLazyComponent = lazy(() => import('./MyLazyComponent'));
+
     return (
         <Container >
+            <Suspense fallback={<div>Loading...</div>}>
+                <MyLazyComponent />
+            </Suspense>
             <CardGroup className='m-4 gap-3'>
                 <Card className="text-center mx-auto my-5">
                     <h2 className='pt-2'></h2>
@@ -46,7 +51,7 @@ const Items = () => {
                 <Card className="text-center mx-auto my-5">
                     <h2 className='pt-2'></h2>
                     <Card.Img className='p-2' variant="top" src={recipes[0].img} />
-                    <Card.Body>  
+                    <Card.Body>
                         <Card.Title> Name: {recipes[2].name}</Card.Title>
                         <Card.Text> Ingredients: {recipes[2].ingredients} </Card.Text>
                         <Card.Text> Rating: {recipes[2].rating} </Card.Text>
