@@ -1,6 +1,6 @@
 import React, {  useState } from 'react';
 import { Button, Card, CardGroup, Container } from 'react-bootstrap';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -24,13 +24,8 @@ const Items = () => {
         toast.success(' WOW   You are Lucky! ');
     }
 
-    //  const MyLazyComponent = lazy(() => import('./MyLazyComponent'));
-
     return (
         <Container >
-            {/* <Suspense fallback={<div>Loading...</div>}>
-                <MyLazyComponent />
-            </Suspense> */}
             <CardGroup className='m-4 gap-3'>
                 <Card className="text-center mx-auto my-5">
                     <h2 className='pt-2'></h2>
@@ -70,6 +65,7 @@ const Items = () => {
 
             </CardGroup>
             <ToastContainer />
+           <div className=' text-center my-3'><Link  to='/'><Button variant="dark" >Return Home</Button></Link></div>
         </Container>
     );
 };

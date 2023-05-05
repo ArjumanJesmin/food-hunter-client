@@ -11,7 +11,6 @@ const NavigationBar = () => {
 
   const { user, logOut } = useContext(AuthContext);
 
-  const [active, setActive] = useState('home');
   const [hovering, setHovering] = useState(false);
 
   const handleLogOut = () => {
@@ -20,10 +19,14 @@ const NavigationBar = () => {
       .catch(error => console.log(error))
   }
 
-  const handleNavClick = (NavLink) => {
-    setActive(NavLink);
-    console.log(NavLink)
-  };
+
+const navLinkStyle = ({isActive}) =>{
+  return{
+    fontWeight: isActive ? 'bold' : 'normal',
+    textDecoration: isActive ? 'underline' : 'none',
+    color: isActive ?  'blue': 'black'
+  }
+}
 
   const handleMouseEnter = () => {
     setHovering(true);
@@ -41,11 +44,12 @@ const NavigationBar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto gap-3">
-              <NavLink onClick={() => handleNavClick('home')} className={`text-decoration-none text-dark nav-link ${active === 'home' ? 'active' : ''}`} to="/" >Home</NavLink>
 
-              <NavLink className={`text-decoration-none text-dark nav-link ${active === 'about' ? 'active' : ''}`} to="/about" onClick={() => handleNavClick('about')} >About</NavLink>
+              <NavLink style={navLinkStyle} to="/" >Home</NavLink>
 
-              <NavLink onClick={() => handleNavClick('blog')} className={`text-decoration-none text-dark nav-link ${active === 'blog' ? 'active' : ''}`} to="/blog" >Blog</NavLink>
+              <NavLink style={navLinkStyle} to='/about' >About</NavLink>
+
+              <NavLink style={navLinkStyle} to="/blog" >Blog</NavLink>
             </Nav>
           </Navbar.Collapse>
 
