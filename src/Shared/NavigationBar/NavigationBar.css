@@ -1,3 +1,7 @@
 .nav-link.active {
     color: rgb(0, 60, 255);
   }
+
+  .user-hover {
+    color: blue;
+  }

@@ -5,7 +5,6 @@ import {  FaRegSmile } from "react-icons/fa";
 import { AuthContext } from '../../providers/AuthProvider';
 
 
-// const auth = getAuth(app);
 
 const Register = () => {
     const [error,setError] =useState('')
@@ -27,7 +26,7 @@ const Register = () => {
             setError('please add at least one uppercase')
             return
         } else if (!/(?=.*?[#?!@$%^&*-])/.test(password)) {
-            setError('please add at least one uppercase')
+            setError('please add at least one special characters')
             return;
         } else if (password.length < 6){
             setError('please Minimum six in length!');
@@ -38,8 +37,8 @@ const Register = () => {
         .then(result=>{
             const createdUser = result.user
             console.log(createdUser)
-            event.target.reset();
             setSuccess('Register Successfully')
+            event.target.reset();
         })
         .catch(error =>{
             console.log(error)

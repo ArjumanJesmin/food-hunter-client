@@ -2,8 +2,8 @@
 import React, { useContext } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { FaGithub, FaGoogle, FaRegSmile } from 'react-icons/fa';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { GithubAuthProvider, GoogleAuthProvider, getAuth,  signInWithPopup } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 import { AuthContext } from '../../providers/AuthProvider';
 
@@ -14,7 +14,9 @@ const Login = () => {
 
     const googleProvider = new GoogleAuthProvider();
     const GithubProvider = new GithubAuthProvider();
-    const { signIn } = useContext(AuthContext);
+
+    const {  signIn } = useContext(AuthContext);
+
     const location = useLocation()
     console.log(location)
     const from = location.state?.from?.pathname || '/'

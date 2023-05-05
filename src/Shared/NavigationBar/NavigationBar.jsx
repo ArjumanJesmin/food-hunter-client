@@ -12,6 +12,7 @@ const NavigationBar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const [active, setActive] = useState('home');
+  const [hovering, setHovering] = useState(false);
 
   const handleLogOut = () => {
     logOut()
@@ -19,10 +20,19 @@ const NavigationBar = () => {
       .catch(error => console.log(error))
   }
 
-  
-  const handleNavClick = (linkName) => {
-    setActive(linkName);
+  const handleNavClick = (NavLink) => {
+    setActive(NavLink);
+    console.log(NavLink)
   };
+
+  const handleMouseEnter = () => {
+    setHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovering(false);
+  };
+
   return (
     <>
       <Navbar bg="light" expand="lg" className='py-4'>
@@ -31,15 +41,17 @@ const NavigationBar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto gap-3">
-              <NavLink   onClick={() => handleNavClick('home')} className={`text-decoration-none text-dark nav-link ${active === 'home' ? 'active' : ''}`} to="/" >Home</NavLink>
+              <NavLink onClick={() => handleNavClick('home')} className={`text-decoration-none text-dark nav-link ${active === 'home' ? 'active' : ''}`} to="/" >Home</NavLink>
 
-              <NavLink className={ `text-decoration-none text-dark nav-link ${active === 'about' ? 'active' : ''}`} to="/about" onClick={() => handleNavClick('about')} >About</NavLink>
+              <NavLink className={`text-decoration-none text-dark nav-link ${active === 'about' ? 'active' : ''}`} to="/about" onClick={() => handleNavClick('about')} >About</NavLink>
 
-              <NavLink onClick={() => handleNavClick('blog')}  className={`text-decoration-none text-dark nav-link ${active === 'blog' ? 'active' : ''}`} to="/blog" >Blog</NavLink>
+              <NavLink onClick={() => handleNavClick('blog')} className={`text-decoration-none text-dark nav-link ${active === 'blog' ? 'active' : ''}`} to="/blog" >Blog</NavLink>
             </Nav>
           </Navbar.Collapse>
 
-          {user && <Nav.Link href="#deets"> <FaUserCircle style={{ fontSize: '2rem' }} /> {user.displayName}</Nav.Link>}
+          {user && <Nav.Link href="#deets" className={hovering ? "user-hover" : ""}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}> <FaUserCircle style={{ fontSize: '2rem' }} />  {user.displayName}</Nav.Link>}
 
           {
             user ? <Button onClick={handleLogOut} variant="secondary">LogOut</Button> :

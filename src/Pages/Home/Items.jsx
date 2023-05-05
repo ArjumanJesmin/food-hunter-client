@@ -11,9 +11,17 @@ const Items = () => {
 
     const [accepted, setAccepted] = useState(false)
 
-    const handleAccepted = () => {
+    const handleAcceptedOne = () => {
         setAccepted(true)
         toast.success(' WOW   I Like it! ');
+    }
+    const handleAcceptedTwo = () => {
+        setAccepted(true)
+        toast.success(' WOW   Good Choice! ');
+    }
+    const handleAcceptedThree = () => {
+        setAccepted(true)
+        toast.success(' WOW   You are Lucky! ');
     }
 
     //  const MyLazyComponent = lazy(() => import('./MyLazyComponent'));
@@ -32,7 +40,7 @@ const Items = () => {
                         <Card.Text> Ingredients: {recipes[0].ingredients} </Card.Text>
                         <Card.Text> Rating: {recipes[0].rating} </Card.Text>
                         <Card.Text>Method: {recipes[0].method} </Card.Text>
-                        <Button disabled={accepted} onClick={handleAccepted} variant="primary">Go somewhere</Button>
+                        <Button disabled={accepted} onClick={handleAcceptedOne} variant="primary">Favorite button</Button>
                     </Card.Body>
                 </Card>
 
@@ -44,7 +52,7 @@ const Items = () => {
                         <Card.Text> Ingredients: {recipes[1].ingredients} </Card.Text>
                         <Card.Text> Rating: {recipes[1].rating} </Card.Text>
                         <Card.Text> Method: {recipes[1].method} </Card.Text>
-                        <Button disabled={accepted} onClick={handleAccepted} variant="primary">Go somewhere</Button>
+                        <Button disabled={accepted} onClick={handleAcceptedTwo} variant="primary">Favorite button</Button>
                     </Card.Body>
                 </Card>
 
@@ -56,7 +64,7 @@ const Items = () => {
                         <Card.Text> Ingredients: {recipes[2].ingredients} </Card.Text>
                         <Card.Text> Rating: {recipes[2].rating} </Card.Text>
                         <Card.Text> Method: {recipes[2].method} </Card.Text>
-                        <Button disabled={accepted} onClick={handleAccepted} variant="primary">Go somewhere</Button>
+                        <Button disabled={accepted} onClick={handleAcceptedThree} variant="primary">Favorite button</Button>
                     </Card.Body>
                 </Card>
 
