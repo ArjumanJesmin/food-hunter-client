@@ -34,19 +34,19 @@ const Items = () => {
             <CardGroup className='m-4 gap-3'>
                 <Card className="text-center mx-auto my-5">
                     <h2 className='pt-2'></h2>
-                    <Card.Img className='p-2' variant="top" src={recipes[0].img} />
+                    <Card.Img className='p-2' variant="top" src={recipes[0]?.img} />
                     <Card.Body>
-                        <Card.Title> Name: {recipes[0].name}</Card.Title>
-                        <Card.Text> Ingredients: {recipes[0].ingredients} </Card.Text>
-                        <Card.Text> Rating: {recipes[0].rating} </Card.Text>
-                        <Card.Text>Method: {recipes[0].method} </Card.Text>
+                        <Card.Title> Name: {recipes[0]?.name}</Card.Title>
+                        <Card.Text> Ingredients: {recipes[0]?.ingredients} </Card.Text>
+                        <Card.Text> Rating: {recipes[0]?.rating} </Card.Text>
+                        <Card.Text>Method: {recipes[0]?.method} </Card.Text>
                         <Button disabled={accepted} onClick={handleAcceptedOne} variant="primary">Favorite button</Button>
                     </Card.Body>
                 </Card>
 
                 <Card className="text-center mx-auto my-5">
                     <h2 className='pt-2'></h2>
-                    <Card.Img className='p-2' variant="top" src={recipes[1].img} />
+                    <Card.Img className='p-2' variant="top" src={recipes[1]?.img} />
                     <Card.Body>
                         <Card.Title> Name: {recipes[1].name}</Card.Title>
                         <Card.Text> Ingredients: {recipes[1].ingredients} </Card.Text>
@@ -58,7 +58,7 @@ const Items = () => {
 
                 <Card className="text-center mx-auto my-5">
                     <h2 className='pt-2'></h2>
-                    <Card.Img className='p-2' variant="top" src={recipes[0].img} />
+                    <Card.Img className='p-2' variant="top" src={recipes[2]?.img} />
                     <Card.Body>
                         <Card.Title> Name: {recipes[2].name}</Card.Title>
                         <Card.Text> Ingredients: {recipes[2].ingredients} </Card.Text>

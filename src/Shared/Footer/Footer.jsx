@@ -11,9 +11,9 @@ const Footer = () => {
         <Col xs={12} sm={6} md={4}>
           <h5>Follow us</h5>
           <ul className="list-unstyled ">
-            <li><Link className='text-decoration-none text-white' to="/https://twitter.com"> <FaTwitter /> Twitter  </Link></li>
-            <li><Link className='text-decoration-none text-white' to="/https://facebook.com"> <FaFacebook />  Facebook  </Link></li>
-            <li><Link className='text-decoration-none text-white' to="https://instagram.com"> <FaInstagram /> Instagram </Link></li>
+            <li><Link className='text-decoration-none text-white' to="https://twitter.com/"> <FaTwitter /> Twitter  </Link></li>
+            <li><Link className='text-decoration-none text-white' to="https://www.facebook.com/"> <FaFacebook />  Facebook  </Link></li>
+            <li><Link className='text-decoration-none text-white' to="https://www.instagram.com/"> <FaInstagram /> Instagram </Link></li>
           </ul>
         </Col>
         <Col xs={12} sm={6} md={4}>

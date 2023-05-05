@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {  FaRegSmile } from "react-icons/fa";
 import { AuthContext } from '../../providers/AuthProvider';
 
@@ -10,6 +10,10 @@ const Register = () => {
     const [error,setError] =useState('')
     const [success,setSuccess] =useState('')
     const { createUser } = useContext(AuthContext);
+
+    const location = useLocation()
+    console.log(location)
+    const from = location.state?.from?.pathname || '/'
    
     const handleRegister = (event) => {
         event.preventDefault();
@@ -38,6 +42,7 @@ const Register = () => {
             const createdUser = result.user
             console.log(createdUser)
             setSuccess('Register Successfully')
+            navigate(from, {replace:true})
             event.target.reset();
         })
         .catch(error =>{

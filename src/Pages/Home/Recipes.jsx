@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import Items from './Items';
+// import Items from './Items';
 import { ToastContainer, toast } from 'react-toastify';
+
+import LazyLoad from 'react-lazy-load';
+
+const LazyItems = lazy(() => import('./Items'));
 
 const Recipes = () => {
     const data = useLoaderData();
@@ -14,9 +18,11 @@ const Recipes = () => {
         setAccepted(true)
         toast.success('Thank You So Much!');
     }
+   
 
     return (
         <>
+        <Suspense fallback={<div>Loading...</div>}>
             <Container>
                 <Row>
                     <Col lg={8} md={6} sm={4} className=' mx-auto'>
@@ -34,7 +40,12 @@ const Recipes = () => {
                     </Col>
                 </Row>
             </Container>
-            <Items />
+
+            <LazyLoad offsetVertical={1000} offsetHorizontal={500}>
+            <LazyItems/>
+          </LazyLoad>
+           
+            </Suspense>
         </>
     );
 };
